@@ -1,0 +1,196 @@
+#root{
+    font-family: 'Roboto', sans-serif;
+}
+
+body, html{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #122033
+}
+
+.menu{
+    color: #fff;
+    font-size: 2em;
+    margin: 30px;
+    display: inline-block;
+}
+
+.slidemenu{
+  height: 100vh;
+  width: 70vw;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.slidemenu a{
+  color: #333;
+  display: block;
+  font-size: 1.2em;
+  margin-top: 30px;
+  margin-left: 30px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.show{
+  display: block;
+}
+
+.hide{
+  display: none;
+}
+
+.loading{
+    margin-top: 150px;
+    color: #fff;
+    font-size: 2.5em;
+    display: block;
+    text-align: center;
+}
+
+.ciudad{
+    color:white;
+    text-align: center;
+    font-weight: lighter;
+}
+
+.temperatura{
+    color: white;
+    font-size: 4em;
+    font-weight: lighter;
+    display: block;
+    text-align: center;
+    margin: 60px;
+}
+
+.temperatura p{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.weatherCard{
+  display: block;
+}
+
+.weatherCard .card{
+  display: block;
+  width: 60%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #eee;
+}
+
+.weatherCard .card h4{
+  display: inline-block;
+  width: 50%;
+}
+.weatherCard .card h2{
+  text-align: right;
+  display: inline-block;
+  width: 50%;
+}
+
+
+
+
+/**/
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+  
+  .animated.infinite {
+    animation-iteration-count: infinite;
+  }
+  
+  .animated.delay-1s {
+    animation-delay: 1s;
+  }
+  
+  .animated.delay-2s {
+    animation-delay: 2s;
+  }
+  
+  .animated.delay-3s {
+    animation-delay: 3s;
+  }
+  
+  .animated.delay-4s {
+    animation-delay: 4s;
+  }
+  
+  .animated.delay-5s {
+    animation-delay: 5s;
+  }
+  
+  .animated.fast {
+    animation-duration: 800ms;
+  }
+  
+  .animated.faster {
+    animation-duration: 500ms;
+  }
+  
+  .animated.slow {
+    animation-duration: 2s;
+  }
+  
+  .animated.slower {
+    animation-duration: 3s;
+  }
+  
+  @media (prefers-reduced-motion) {
+    .animated {
+      animation: unset !important;
+      transition: none !important;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fadeIn {
+    animation-name: fadeIn;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+  
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInLeft {
+    animation-name: slideInLeft;
+  }
+
+  @keyframes slideOutLeft {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    to {
+      visibility: hidden;
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  
+  .slideOutLeft {
+    animation-name: slideOutLeft;
+  }
