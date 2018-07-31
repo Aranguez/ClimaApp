@@ -2,53 +2,29 @@ import React, { Component } from 'react'
 import '../App.css'
 
 import Menu from './menu'
+import getData from './../services/GetData.service';
 
 export default class Weather extends Component {
 
-    constructor({ city }){
+    constructor(){
         super();
         this.state = {
-            city,
+            city: 'Buenos Aires',
             data: [],
             loading: true
         }
     }
 
     componentDidMount(){
-        this.getData(this.state.city)
-    }
-
-    getData = city => {
-        const api_key = '89b9552c3cc30cb689089e33a41dac98';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`
+        getData(this.state.city, this, 'main-weather')
         
-        fetch(url)
-            .then(response => response.json())
-            .then(info => {
-                const result = {
-                    'city': info.name,
-                    'temperature': Math.floor(info.main.temp),
-                    'temp_max': info.main.temp_max,
-                    'temp_min': info.main.temp_min,
-                    'humidity': info.main.humidity,
-                    'weatherState': info.weather[0].main
-                }
-                this.setState({
-                    data: result,
-                    loading: false
-                })
-            })
-            .catch( error => console.log('parse have fail', error) )
     }
-
     render() {
-        //destructuring
         const {city, temperature, weatherState, humidity, temp_min, temp_max} = this.state.data
 
-        //rendering
         return (
             <div>
-                <Menu/>
+                <Menu />
                 <h1>{ this.state.loading && <i className="fas fa-circle-notch fa-spin loading"></i> }</h1>
                 { this.state.data && !this.state.loading && //--> render template
 

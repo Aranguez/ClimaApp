@@ -10,17 +10,10 @@ import Weather from './components/weather'
 
 class App extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-      city:'Buenos Aires'
-    }
-  }
-
   render() {
     return (
       <div>
-        <Weather city={this.state.city}/>
+        <Weather/>
       </div>
     );
   }

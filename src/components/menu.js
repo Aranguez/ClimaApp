@@ -8,12 +8,11 @@ export default class Menu extends Component {
     super();
     this.state = {
       start: true,
-      show: false,
-      citys: ['Buenos Aires', 'Tokyo', 'Bogota', 'paris']
+      show: false
     }
   }
 
-  handleShowClass(e){
+  handleShowClass = (e) => {
     e.preventDefault()
     this.setState({
       show: !this.state.show,
@@ -35,7 +34,8 @@ export default class Menu extends Component {
                           'animated slideOutLeft fast' }`}>
 
           <button type="button" onClick={ e => this.handleShowClass(e) }>X</button>
-          <WeatherCards citys={this.state.citys}/>
+          
+          <WeatherCards/>              
           
         </div>
       </div>
