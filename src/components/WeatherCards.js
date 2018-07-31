@@ -16,12 +16,13 @@ export default class WeatherCards extends Component {
     addCity = (event) => {
         event.preventDefault()
         getData(this.refs.ciudad.value, this, 'cards')
+        this.refs.form.reset();
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.addCity}>
+                <form onSubmit={this.addCity} ref="form">
                     <input type="text" placeholder="Agregar una ciudad" ref="ciudad"/>
                     <button type="submit">
                     <span className="fa-stack fa-2x" onClick={this.addCity}>
