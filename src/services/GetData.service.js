@@ -1,7 +1,7 @@
 //servicio para obtener data
 
 const getData = (city, thos, type) => {
-    console.log('ejecutando servicio')
+    console.log('se obtiene la data')
     const api_key = '89b9552c3cc30cb689089e33a41dac98';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`
 
@@ -22,9 +22,8 @@ const getData = (city, thos, type) => {
                     loading: false
                 })
             } else{
-                console.log('es una tarjeta !')
                 thos.setState({
-                    data: [ ...thos.state.data,result],
+                    cardData: [ ...thos.state.cardData, result],
                     loading: false
                 })
             }

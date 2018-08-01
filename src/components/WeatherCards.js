@@ -1,43 +1,39 @@
 import React, { Component } from 'react'
 
-import getData from './../services/GetData.service';
-
 export default class WeatherCards extends Component {
 
-    constructor(){
+    constructor({cardData}){
         super();
         this.state = {
-            city: '',
-            data: [],
+            cardData,
             loading: true
-        } 
+        }
     }
 
-    addCity = (event) => {
-        event.preventDefault()
-        getData(this.refs.ciudad.value, this, 'cards')
-        this.refs.form.reset();
+    componentWillReceiveProps({cardData}){
+        this.setState({
+            cardData,
+        })
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.addCity} ref="form">
-                    <input type="text" placeholder="Agregar una ciudad" ref="ciudad"/>
-                    <button type="submit">
-                    <span className="fa-stack fa-2x" onClick={this.addCity}>
-                        <i className="fas fa-circle fa-stack-2x"></i>
-                        <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
-                    </span>
-                    </button>
-                </form>
-                <div className="weatherCard">
-                    { this.state.data.map( item => 
-                        <div className="card" key={`${item.city}`}>
+            
+            <div className="weatherCard">
+
+                { this.state.cardData.length > 0 && this.state.cardData.map( item => 
+                    <div className="card" key={`${item.city}`}>
+                        <div>
                             <h4>{`${item.city}`}</h4>
                             <h2>{`${item.temperature}°`}</h2>
-                    </div> ) }
-                </div>
+                        </div>
+                        <div>
+                            <button type="button">
+                                <i className="far fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                ) }
             </div>
         )
     }

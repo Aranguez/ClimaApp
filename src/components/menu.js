@@ -1,16 +1,32 @@
 import React, { Component } from 'react'
 
+/* componentes */
 import WeatherCards from './WeatherCards';
 
 export default class Menu extends Component {
 
-  constructor(){
+  constructor({cardData}){
     super();
     this.state = {
+      cardData,
       start: true,
       show: false
     }
   }
+
+  componentWillReceiveProps({cardData}){
+    if (cardData.length !== 0) {
+      this.setState({
+        cardData
+      })
+    }
+  }
+
+  /*addCity = (event) => {
+    const city = document.querySelector('#city').value
+    event.preventDefault()
+    getData(city, this, 'cards')
+  }*/
 
   handleShowClass = (e) => {
     e.preventDefault()
@@ -33,10 +49,9 @@ export default class Menu extends Component {
                           'animated slideInLeft fast' :
                           'animated slideOutLeft fast' }`}>
 
-          <button type="button" onClick={ e => this.handleShowClass(e) }>X</button>
+          <button type="button" className="btn btn-primary" onClick={ e => this.handleShowClass(e) }>X</button>
           
-          <WeatherCards/>              
-          
+          <WeatherCards cardData={this.state.cardData}/>              
         </div>
       </div>
     )
