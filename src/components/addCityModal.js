@@ -1,5 +1,5 @@
 import React from 'react';
-import  { Modal, Button }  from 'react-bootstrap';
+import  { Modal, Button, Grid, Row, Col }  from 'react-bootstrap';
 
 class AddCityModal extends React.Component {
 
@@ -23,19 +23,33 @@ class AddCityModal extends React.Component {
     
     render() {
       return (
-        <Modal
-            show={this.state.show}
-            onHide={this.closeModal}
-            bsSize="small"
-            aria-labelledby="contained-modal-title-sm"
-            className={`modal ${!this.state.show ? 'animated fadeOut fast' : 'animated fadeIn fast' }`}
-        >
-            <Modal.Body>
-                <input type="text" className="input" placeholder="Agregar una ciudad" id="city"/>
-                <Button className="btn cancel" onClick={this.props.closeModal}>Cancelar</Button>
-                <Button className="btn accept" onClick={this.props.addCity}>Agregar</Button>
-            </Modal.Body>
-        </Modal>
+        <div>
+            <Modal
+                show={this.state.show}
+                onHide={this.closeModal}
+                bsSize="small"
+                aria-labelledby="contained-modal-title-sm"
+                className={`modal ${!this.state.show ? 'animated fadeOut fast' : 'animated fadeIn fast' }`}
+            >
+                <Modal.Body>
+                    <input type="text" className="input" placeholder="New city" id="city"/>
+                    <div className="btns">
+                    <Grid>
+                        <Row>
+                            <Col xs={6} className="text-center">
+                                <Button className="btn cancel" onClick={this.props.closeModal}>Cancel</Button>
+                            </Col>
+                            <Col xs={6} className="text-center">
+                                <Button className="btn accept" onClick={this.props.addCity}>Add</Button>
+                            </Col>
+                        </Row>
+                    </Grid>
+                    </div>
+                </Modal.Body>
+                <div className="backModal"></div>
+            </Modal>
+            
+        </div>
       );
     }
 }

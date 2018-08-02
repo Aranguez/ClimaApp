@@ -49,7 +49,9 @@ export default class Menu extends Component {
                           'animated slideInLeft fast' :
                           'animated slideOutLeft fast' }`}>
 
-          <button type="button" className="btn btn-primary" onClick={ e => this.handleShowClass(e) }>X</button>
+          <button type="button" className="iconBtn" onClick={ e => this.handleShowClass(e) }>
+            <i className="fas fa-times"></i>
+          </button>
           
           <WeatherCards cardData={this.state.cardData}/>              
         </div>

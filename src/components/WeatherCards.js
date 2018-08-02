@@ -19,21 +19,16 @@ export default class WeatherCards extends Component {
     render() {
         return (
             
-            <div className="weatherCard">
-
-                { this.state.cardData.length > 0 && this.state.cardData.map( item => 
+            <div>
+                { this.state.cardData.length > 0 ? this.state.cardData.map( item => 
                     <div className="card" key={`${item.city}`}>
-                        <div>
-                            <h4>{`${item.city}`}</h4>
-                            <h2>{`${item.temperature}°`}</h2>
-                        </div>
-                        <div>
-                            <button type="button">
-                                <i className="far fa-trash-alt"></i>
-                            </button>
-                        </div>
+                        <h4>{`${item.city}`}</h4>
+                        <h2>{`${item.temperature}°`}</h2>
                     </div>
-                ) }
+                ) : <div className="alert-message">
+                        <i className="fas fa-exclamation-circle"></i>
+                        <h3>No cities here !</h3>
+                    </div> }
             </div>
         )
     }

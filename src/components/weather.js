@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import  { Button }  from 'react-bootstrap';
+import  { Button, Grid, Row, Col }  from 'react-bootstrap';
 
 import Menu from './menu'
 import getData from './../services/GetData.service';
@@ -49,9 +49,12 @@ export default class Weather extends Component {
             <div>
                 <AddCityModal addCity={this.addCity} show={this.state.showModal} closeModal={this.closeModal}/>
                 <Menu cardData={this.state.cardData} />
-                <Button bsStyle="primary" bsSize="medium" onClick={this.showModal}>
-                    <i className="fas fa-plus"></i>
-                </Button>
+                <div className="add-btn" onClick={this.showModal}>
+                    <span>Add City</span>
+                    <Button className="btn-component">
+                        <i className="fas fa-plus"></i>
+                    </Button>
+                </div>
                 <h1>{ this.state.loading && <i className="fas fa-circle-notch fa-spin loading"></i> }</h1>
                 { this.state.data && !this.state.loading && //--> render template
 
@@ -60,12 +63,23 @@ export default class Weather extends Component {
                         <h3 className="ciudad"><i className="fas fa-map-marker-alt"></i> {city}</h3>
                         <span className="temperatura">
                             {temperature}°
-                            <p><i className="fas fa-tint"></i> {weatherState}</p>
+                            <p><i className="fas fa-sun"></i> {weatherState}</p>
                         </span>
                         
-                        <span>Humedad: {humidity}%</span><br/>
-                        <span>Minima: {temp_min}°</span><br/>
-                        <span>Máxima: {temp_max}°</span>
+                        <Grid>
+                            <Row className="show-grid weatherData">
+                                <Col xs={4} className="text-center">
+                                    <span><i className="fas fa-tint"></i> {humidity}%</span><br/>
+                                </Col>
+                                <Col xs={4} className="text-center">
+                                    <span>Min {temp_min}°</span><br/>
+                                    <span>Max {temp_max}°</span>
+                                </Col>
+                                <Col xs={4} className="text-center" >
+                                    
+                                </Col>
+                            </Row>
+                        </Grid>
                     </div>
                 }
             </div>
